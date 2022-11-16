@@ -19,7 +19,7 @@ public class PointsCalculationServiceUT {
         Match match = createMatch(2, 1);
         Bet bet = createBet(2, 1);
 
-        assertEquals(3, pointsCalculationService.calculatePointsFor(match, bet));
+        assertEquals(10, pointsCalculationService.calculatePointsFor(match, bet));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class PointsCalculationServiceUT {
         Match match = createMatch(2, 1);
         Bet bet = createBet(3, 2);
 
-        assertEquals(2, pointsCalculationService.calculatePointsFor(match, bet));
+        assertEquals(3, pointsCalculationService.calculatePointsFor(match, bet));
     }
 
     @Test
@@ -35,7 +35,7 @@ public class PointsCalculationServiceUT {
         Match match = createMatch(10, 2);
         Bet bet = createBet(20, 12);
 
-        assertEquals(2, pointsCalculationService.calculatePointsFor(match, bet));
+        assertEquals(3, pointsCalculationService.calculatePointsFor(match, bet));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class PointsCalculationServiceUT {
         Match match = createMatch(6, 3);
         Bet bet = createBet(2, 1);
 
-        assertEquals(1, pointsCalculationService.calculatePointsFor(match, bet));
+        assertEquals(3, pointsCalculationService.calculatePointsFor(match, bet));
     }
 
     @Test
@@ -78,7 +78,7 @@ public class PointsCalculationServiceUT {
         Bet bet = createBet(4, 4);
         bet.setPenaltyWinnerOne(true);
 
-        assertEquals(4, pointsCalculationService.calculatePointsFor(match, bet));
+        assertEquals(11, pointsCalculationService.calculatePointsFor(match, bet));
     }
 
     @Test
@@ -99,7 +99,7 @@ public class PointsCalculationServiceUT {
         Bet bet = createBet(0, 0);
         bet.setPenaltyWinnerOne(false);
 
-        assertEquals(4, pointsCalculationService.calculatePointsFor(match, bet));
+        assertEquals(11, pointsCalculationService.calculatePointsFor(match, bet));
     }
 
     @Test
@@ -109,7 +109,7 @@ public class PointsCalculationServiceUT {
         bet.setPenaltyWinnerOne(false);
         bet.setJoker(true);
 
-        assertEquals(6, pointsCalculationService.calculatePointsFor(match, bet));
+        assertEquals(20, pointsCalculationService.calculatePointsFor(match, bet));
     }
 
     @Test
@@ -120,49 +120,49 @@ public class PointsCalculationServiceUT {
         bet.setPenaltyWinnerOne(false);
         bet.setJoker(true);
 
-        assertEquals(8, pointsCalculationService.calculatePointsFor(match, bet));
+        assertEquals(22, pointsCalculationService.calculatePointsFor(match, bet));
     }
 
     @Test
     public void finalMatchCorrectBetWinnerOne() {
         Match match = createKnockoutMatch(2, 1, false);
         Bet bet = createKnockoutBet(2, 1, false);
-        assertThat(pointsCalculationService.calculatePointsFor(match, bet)).isEqualTo(3);
+        assertThat(pointsCalculationService.calculatePointsFor(match, bet)).isEqualTo(10);
     }
 
     @Test
     public void finalMatchCorrectBetWinnerTwo() {
         Match match = createKnockoutMatch(1, 2, false);
         Bet bet = createKnockoutBet(1, 2, false);
-        assertThat(pointsCalculationService.calculatePointsFor(match, bet)).isEqualTo(3);
+        assertThat(pointsCalculationService.calculatePointsFor(match, bet)).isEqualTo(10);
     }
 
     @Test
     public void finalMatchCorrectBetUndecidedPenaltyOne() {
         Match match = createKnockoutMatch(1, 1, true);
         Bet bet = createKnockoutBet(1, 1, true);
-        assertThat(pointsCalculationService.calculatePointsFor(match, bet)).isEqualTo(4);
+        assertThat(pointsCalculationService.calculatePointsFor(match, bet)).isEqualTo(11);
     }
 
     @Test
     public void finalMatchCorrectBetUndecidedPenaltyTwo() {
         Match match = createKnockoutMatch(1, 1, false);
         Bet bet = createKnockoutBet(1, 1, false);
-        assertThat(pointsCalculationService.calculatePointsFor(match, bet)).isEqualTo(4);
+        assertThat(pointsCalculationService.calculatePointsFor(match, bet)).isEqualTo(11);
     }
 
     @Test
     public void finalMatchWrongBetUndecidedPenaltyOne() {
         Match match = createKnockoutMatch(1, 1, true);
         Bet bet = createKnockoutBet(2, 1, false);
-        assertThat(pointsCalculationService.calculatePointsFor(match, bet)).isEqualTo(0);
+        assertThat(pointsCalculationService.calculatePointsFor(match, bet)).isEqualTo(3);
     }
 
     @Test
     public void finalMatchWrongBetUndecidedPenaltyTwo() {
         Match match = createKnockoutMatch(1, 1, false);
         Bet bet = createKnockoutBet(2, 1, false);
-        assertThat(pointsCalculationService.calculatePointsFor(match, bet)).isEqualTo(0);
+        assertThat(pointsCalculationService.calculatePointsFor(match, bet)).isEqualTo(3);
     }
 
     private Bet createBet(Integer goalsTeamOne, Integer goalsTeamTwo) {

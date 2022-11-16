@@ -58,6 +58,7 @@ public class PointsCalculationService implements ApplicationListener<MatchGoalsC
         final int penaltyPoints = calculatePenaltyPointsFor(match, bet);
 
         final int subtotal = standardPoints + penaltyPoints;
+
         if (bet.isJoker()) {
             return subtotal * JOKER_MULTIPLIER;
         }
@@ -84,18 +85,29 @@ public class PointsCalculationService implements ApplicationListener<MatchGoalsC
     }
 
     private int calculateStandardPointsFor(Match match, Bet bet) {
+        int pointsScored = 0;
+
         if (isSameGoalResult(match, bet)) {
-            return 3;
+            return 10;
         }
 
-        if (isSameGoalDifference(match, bet)) {
-            return 2;
+        if (match.getGoalsTeamOne().equals(bet.getGoalsTeamOne())) {
+            pointsScored += 3;
         }
+
+        if (match.getGoalsTeamTwo().equals(bet.getGoalsTeamTwo())) {
+            pointsScored += 3;
+        }
+
+//        if (isSameGoalDifference(match, bet)) {
+//            return 2;
+//        }
 
         if (isCorrectWinner(match, bet)) {
-            return 1;
+            pointsScored += 3;
         }
-        return 0;
+
+        return pointsScored;
     }
 
     private boolean isCorrectWinner(Match match, Bet bet) {
