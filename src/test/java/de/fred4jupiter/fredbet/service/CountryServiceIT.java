@@ -44,13 +44,13 @@ public class CountryServiceIT {
         createSomeMatches();
         matchRepository.flush();
 
-        List<Country> countries = countryService.getAvailableCountriesExtraBetsSortedWithNoneEntryByLocale(Locale.GERMAN);
+        List<Country> countries = countryService.getAvailableCountriesExtraBetsSortedWithNoneEntryByLocale(Locale.ENGLISH);
         assertNotNull(countries);
         assertThat(countries.size()).isEqualTo(5);
         assertThat(countries.get(0)).isEqualTo(Country.NONE);
         assertThat(countries.get(1)).isEqualTo(Country.BULGARIA);
-        assertThat(countries.get(2)).isEqualTo(Country.GERMANY);
-        assertThat(countries.get(3)).isEqualTo(Country.FRANCE);
+        assertThat(countries.get(2)).isEqualTo(Country.FRANCE);
+        assertThat(countries.get(3)).isEqualTo(Country.GERMANY);
         assertThat(countries.get(4)).isEqualTo(Country.IRELAND);
     }
 

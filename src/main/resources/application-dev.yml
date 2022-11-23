@@ -1,6 +1,11 @@
 spring:
   thymeleaf:
     cache: false
+  web:
+    resources:
+      static-locations: file:src/main/resources/static
+      cache:
+        period: 0
   h2:
     console:
       # connect in console (http://localhost:8080/h2)

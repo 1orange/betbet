@@ -1,3 +1,22 @@
+.result-item {
+    padding: 35px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px 2px rgb(55 107 255 / 10%);
+    margin: 15px 0;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.d-flex {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
 h1 {
 	font-size: 1.6em;
 }

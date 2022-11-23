@@ -252,8 +252,17 @@
         </dependency>
     </dependencies>
 
+
     <build>
         <finalName>fredbet</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/style.tailwind.css</exclude>
+                </excludes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
