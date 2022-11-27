@@ -115,7 +115,8 @@ public class PointsCalculationService implements ApplicationListener<MatchGoalsC
             // you can only get points if the penalty winner is correct and this is calculated in the other method
             return false;
         }
-        return (match.isTeamOneWinner() && bet.isTeamOneWinner()) || (match.isTeamTwoWinner() && bet.isTeamTwoWinner()) || match.isUndecidedResult();
+
+        return (match.isTeamOneWinner() && bet.isTeamOneWinner()) || (match.isTeamTwoWinner() && bet.isTeamTwoWinner()) || (bet.isUndecidedBetting() && match.isUndecidedResult());
     }
 
     private boolean isSameGoalDifference(Match match, Bet bet) {
